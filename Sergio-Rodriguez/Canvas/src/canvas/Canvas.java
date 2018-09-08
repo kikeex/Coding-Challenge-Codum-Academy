@@ -104,6 +104,7 @@ public class Canvas {
         }
     }
 
+    //Pinta las lineas verticales sobre la coordenada x
     private static void drawVerticalLine(int x1, int y1, int y2) {
         int endPoint = Math.max(y2, y1);
         int startPoint = Math.min(y2, y1);
@@ -112,7 +113,8 @@ public class Canvas {
         }
         printCanvas();
     }
-
+    
+    //Pinta las lineas verticales sobre la coordenada y
     private static void drawHorizontalLine(int y1, int x1, int x2) {
         int endPoint = Math.max(x2, x1);
         int startPoint = Math.min(x2, x1);
