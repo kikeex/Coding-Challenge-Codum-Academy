@@ -1,0 +1,55 @@
+#include<iostream>
+#include<conio.h>
+#include<math.h>
+    using namespace std;
+
+int main(){
+    char opcion = ' ';
+    
+    do{
+    cout<<"\nSelect an option: \n 1. Create a new canvas. \n 2. Start drawing on the canvas by issuing various commands \n 3. Quit \n\n";
+    cin>>opcion;
+    
+    
+        
+        switch(opcion){
+        case 'C':
+            {
+                int w, h;
+                cout<<"\n Enter command: \n";
+                cin>>w>>h;
+                /*Top line*/
+                for(int i = 0; i < w; i++){
+                    cout<<"-";
+                }
+                cout<<"\n";
+                
+                /*Inner line*/
+                for (int row = 0; row < h; row++) { 
+                    cout<<"|";
+                    for (int column = 0; column < w; column++) { 
+                        cout<<" ";
+                    }
+                    cout<<"|\n";
+                }
+                
+                /*Final line*/
+                for(int i = 0; i < w; i++){
+                    cout<<"-";
+                }
+                cout<<"\n";
+            break;
+            }    
+        case 'L':
+            cout<<"\n Case 2 \n";
+            break;
+        case 'Q':
+            cout<<"\n Case 3 \n";
+            getch();
+            break;
+        default:
+               cout<<"\n Invalid option. \n";
+        }        
+    }while(opcion != 'Q');
+    
+}
