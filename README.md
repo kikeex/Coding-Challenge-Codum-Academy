@@ -26,3 +26,9 @@ using the 'x' character.
 B x y c Should fill the entire area connected to (x,y) with "colour" c. The behaviour
 of this is the same as that of the "bucket fill" tool in paint programs.
 Q Should quit the program.
+
+## Instrucciones
+1.- Crear una rama <feature/SU-NOMBRE>
+2.- Todos los commits deben ir directamente a esa rama
+3.- Al completar el desafío, debe generar un PR
+4.- El PR debe respetar el formato
