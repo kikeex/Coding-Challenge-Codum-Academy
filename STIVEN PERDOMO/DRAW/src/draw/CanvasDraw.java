@@ -71,4 +71,8 @@ public class CanvasDraw {
         drawLine(x1, y2, x2, y2);
         drawLine(x1, y1, x2, y1);
     }
+    
+    public void paintColor(){
+    
+    }
 }
