@@ -1,3 +1,4 @@
+require './canvas'
 class Desafio
 
   def lecturaEntrada
@@ -25,6 +26,8 @@ class Desafio
 
   def opcionC(w,h)
       puts "Esta es la variable w = #{w} y h= #{h}"
+      @canvas = Canvas.new
+      @canvas.canvaC(w,h)
 
   end
 
