@@ -2,12 +2,15 @@ require "matrix"
 
 class Canvas
 
-  def initialize(canvas)
-    @canvasWeight=canvas[0].to_i
-    @canvasHight=canvas[1].to_i
+  def initialize(w,h)
+    @canvasWeight=w
+    @canvasHight=h
     @matrix=Array.new(@canvasHight){Array.new(@canvasWeight){false}}
   end
   def to_s
+    if @canvasHight==0
+      return ""
+    end
     string = " " + drawFiller + drawRow(0) + "\n " + drawFiller
     return string
   end
@@ -42,11 +45,45 @@ class Canvas
     end
     return string
   end
-  def L(x1,y1,x2,y2)
-
+  def createLine(x1,y1,x2,y2)
+    if ((x1 < @canvasWeight) && (x2 < @canvasWeight) && (y1 < @canvasHight) && (y2 < @canvasHight))
+      if ((x1!=x2) && (y1==y2))
+        marckInH(x1,x2,y1)
+      elsif ((x1==x2) && (y1!=y2))
+        puts 'Alv'
+        marckInV(y1,y2,x1)
+      else
+        return
+      end
+    end
   end
-  def R(x1,y1,x2,y2)
-
+  def marckInH(a,b,y)
+    if (a>b)
+      a^=b
+      b^=a
+      a^=b
+    end
+    for i in (a..b)
+      @matrix[y][i]=true
+    end
+  end
+  def marckInV(a,b,x)
+    if (a > b)
+      a^=b
+      b^=a
+      a^=b
+    end
+    for i in (a..b)
+      @matrix[i][x]=true
+    end
+  end
+  def createRectangle(x1,y1,x2,y2)
+    if ((x1 < @canvasWeight) && (x2 < @canvasWeight) && (y1 < @canvasHight) && (y2 < @canvasHight))
+      marckInH(x1,x2,y1)
+      marckInH(x1,x2,y2)
+      marckInV(y1,y2,x1)
+      marckInV(y1,y2,x2)
+    end
   end
   def B(x,y,c)
 
