@@ -8,8 +8,7 @@ class Canvas
     @matrix=Array.new(@canvasHight){Array.new(@canvasWeight){false}}
   end
   def to_s
-    puts "#{@matrix[@canvasHight-1][@canvasWeight-1].to_s}"
-    string = " " + drawFiller + drawRow(0) + "\n " +drawFiller
+    string = " " + drawFiller + drawRow(0) + "\n " + drawFiller
     return string
   end
   def drawRow(row)
