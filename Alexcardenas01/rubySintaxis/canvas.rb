@@ -4,6 +4,7 @@ require './rectangle'
 
 hor = '_'
 ver = '|'
+@rectangle = Rectangle.new
 
 def menu
   puts "Coding Challenge"
@@ -14,9 +15,15 @@ def menu
   puts "Option Q. Exit"
   option =gets.chomp.upcase
   
+  #getValues
+  puts 'Write the width rectangle '
+  w = gets.chomp.to_i
+  puts 'Write the heignt rectangle '
+  h = gets.chomp.to_i
   choice = case option
     when 'C'
       puts "choice as #{option}"
+      @rectangle1.rectangleStucture(w, h)
       when 2
       puts "choice as #{option}"
       when 3
@@ -29,9 +36,6 @@ def menu
         puts "Incorrect option"
       end 
 end
-
-
-
 menu
 
 
