@@ -34,7 +34,10 @@ class Main
       y2=command[3].to_i
       @canvas.createRectangle(x1,y1,x2,y2)
     when 'B'
-
+      x=command[0].to_i
+      y=command[1].to_i
+      c=command[2].to_s
+      @canvas.bucket(x,y,c)
     when 'Q'
       !exit
     else
