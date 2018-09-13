@@ -26,7 +26,7 @@ class Desafio
       when 'Q'
           !exit
       end
-
+      lecturaEntrada
   end
 
   def opcionC(w,h)
@@ -38,9 +38,11 @@ class Desafio
 
   def opcionL(x1,y1,x2,y2)
     if x1 == x2
-      @canvas.canvaLVertical(x1,y1,y2)
+      @canvas.canvaLVertical(x1.to_i,y1.to_i,y2.to_i)
+      @canvas.ImprimirCanvaC
     else
-      @canvas.canvaLHorizontal(y1,x1,x2)
+      @canvas.canvaLHorizontal(y1.to_i,x1.to_i,x2.to_i)
+      @canvas.ImprimirCanvaC
     end
 
   end
