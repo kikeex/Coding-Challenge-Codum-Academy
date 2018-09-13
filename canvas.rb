@@ -58,8 +58,4 @@ class Canvas
   end
 
 
-def canva
-  
-end
-
 end
