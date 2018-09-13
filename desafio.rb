@@ -1,8 +1,13 @@
 require './canvas'
 class Desafio
 
+  def initialize
+    @canvas = Canvas.new(0,0)
+  end
+
   def lecturaEntrada
     entrada=Array.new
+    print 'enter command: '
     varInicial=gets.chomp
     entrada=varInicial.split(" ")
     seleccionOpcion(entrada)
@@ -25,11 +30,9 @@ class Desafio
   end
 
   def opcionC(w,h)
-      @canvas = Canvas.new
-      @canvas.get_w_h(w,h)
-      puts "Esta es la variable w = #{w} y h= #{h}"
-      @canvas.canvaC(w,h)
-      @canvas.ImprimirCanvaC(w,h)
+      @canvas = Canvas.new(w,h)
+      @canvas.canvaC
+      @canvas.ImprimirCanvaC
 
   end
 
