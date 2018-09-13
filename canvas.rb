@@ -31,5 +31,15 @@ class Canvas
     end
   end
 
+  def canvaLHorizontal(y,x1,x2)
+
+    
+  end
+
+  def canvaLVertical(x,y1,y2)
+    
+    
+  end
+
 
 end

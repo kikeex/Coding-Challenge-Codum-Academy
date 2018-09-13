@@ -37,6 +37,11 @@ class Desafio
   end
 
   def opcionL(x1,y1,x2,y2)
+    if x1 == x2
+      @canvas.canvaLVertical(x1,y1,y2)
+    else
+      @canvas.canvaLHorizontal(y1,x1,x2)
+    end
 
   end
 
