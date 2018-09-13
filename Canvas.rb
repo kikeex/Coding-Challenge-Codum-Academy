@@ -5,10 +5,10 @@ class Canvas
   def initialize(w,h)
     @canvasWeight=w
     @canvasHight=h
-    @matrix=Array.new(@canvasHight){Array.new(@canvasWeight){false}}
+    @drawed=Array.new(@canvasHight){Array.new(@canvasWeight){" "}}
   end
   def to_s
-    if @canvasHight==0
+    if ((@canvasHight==0)||(@canvasWeight==0))
       return ""
     end
     string = " " + drawFiller + drawRow(0) + "\n " + drawFiller
@@ -29,11 +29,7 @@ class Canvas
     col=0
     string=""
     while (col < @canvasWeight)
-      if((@matrix[row][col].to_s)=='true')
-        string+="X"
-      else
-        string+=" "
-      end
+      string+=@drawed[row][col].to_s
       col+=1
     end
     return string
@@ -48,44 +44,57 @@ class Canvas
   def createLine(x1,y1,x2,y2)
     if ((x1 < @canvasWeight) && (x2 < @canvasWeight) && (y1 < @canvasHight) && (y2 < @canvasHight))
       if ((x1!=x2) && (y1==y2))
-        marckInH(x1,x2,y1)
+        marckInK(x1,x2,true,y1,"X")
       elsif ((x1==x2) && (y1!=y2))
-        puts 'Alv'
-        marckInV(y1,y2,x1)
+        marckInK(y1,y2,false,x1,"X")
       else
         return
       end
     end
   end
-  def marckInH(a,b,y)
+  def marckInK(a,b,w,k,c)
     if (a>b)
       a^=b
       b^=a
       a^=b
     end
     for i in (a..b)
-      @matrix[y][i]=true
-    end
-  end
-  def marckInV(a,b,x)
-    if (a > b)
-      a^=b
-      b^=a
-      a^=b
-    end
-    for i in (a..b)
-      @matrix[i][x]=true
+      if(w)
+        @drawed[k][i]=c
+      else
+        @drawed[i][k]=c
+      end
     end
   end
   def createRectangle(x1,y1,x2,y2)
     if ((x1 < @canvasWeight) && (x2 < @canvasWeight) && (y1 < @canvasHight) && (y2 < @canvasHight))
-      marckInH(x1,x2,y1)
-      marckInH(x1,x2,y2)
-      marckInV(y1,y2,x1)
-      marckInV(y1,y2,x2)
+      marckInK(x1,x2,true,y1,"X")
+      marckInK(x1,x2,true,y2,"X")
+      marckInK(y1,y2,false,x1,"X")
+      marckInK(y1,y2,false,x2,"X")
     end
   end
-  def B(x,y,c)
-
+  def bucket(x,y,color)
+    if ((x >= 0) && (y>=0) && (x < @canvasWeight) && (y < @canvasHight) && (@drawed[y][x]!="X"))
+      paint(x,y,color,"start",0)
+    end
+  end
+  def paint(x,y,color, direction,numMovements)
+    if ((numMovements<(@canvasWeight*@canvasHight)) && (0<=x) && (0<=y) && (x<@canvasWeight) && (y<@canvasHight) && ((@drawed[y][x].to_s)!="X") && (@drawed[y][x]!=color))
+      @drawed[y][x]=color
+      if (direction!="down")
+        paint(x,y-1,color,"up",numMovements+1)
+      end
+      if (direction!="right")
+        paint(x-1,y,color,"left",numMovements+1)
+      end
+      if (direction!="up")
+        paint(x,y+1,color,"down",numMovements+1)
+      end
+      if (direction!="left")
+        paint(x+1,y,color,"right",numMovements+1)
+      end
+    end
+    return
   end
 end
