@@ -25,9 +25,11 @@ class Desafio
   end
 
   def opcionC(w,h)
-      puts "Esta es la variable w = #{w} y h= #{h}"
       @canvas = Canvas.new
+      @canvas.get_w_h(w,h)
+      puts "Esta es la variable w = #{w} y h= #{h}"
       @canvas.canvaC(w,h)
+      @canvas.ImprimirCanvaC(w,h)
 
   end
 
