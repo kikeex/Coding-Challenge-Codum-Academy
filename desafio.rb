@@ -48,15 +48,13 @@ class Desafio
   end
 
   def opcionR(x1,y1,x2,y2)
-  	@canvas.canvaLHorizontal(y1.to_i,x1.to_i,x2.to_i)
-  	@canvas.canvaLVertical(x1.to_i,y1.to_i,y2.to_i)
-  	@canvas.canvaLVertical(x2.to_i,y1.to_i,y2.to_i)
-  	@canvas.canvaLHorizontal(y2.to_i,x1.to_i,x2.to_i)
+    @canvas.canvaR(x1,y1,x2,y2)
   	@canvas.ImprimirCanvaC
   end
 
   def opcionB(x,y,c)
-
+    @canvas.canvaB(x.to_i,y.to_i,c)
+    @canvas.ImprimirCanvaC
   end
 
 
