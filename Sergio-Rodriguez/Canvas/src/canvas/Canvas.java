@@ -86,7 +86,7 @@ public class Canvas {
                 checkLine(Integer.parseInt(words[1]), Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]));
                 break;
             case "R":
-
+                paintRectangle(Integer.parseInt(words[1]), Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]));
                 break;
             case "B":
 
@@ -102,6 +102,7 @@ public class Canvas {
         } else if (y2 == y1) {
             drawHorizontalLine(y1, x1, x2);
         }
+        printCanvas();
     }
 
     //Pinta las lineas verticales sobre la coordenada x
@@ -111,7 +112,6 @@ public class Canvas {
         for (int i = startPoint; i <= endPoint; i++) {
             canvas[i][x1] = 'x';
         }
-        printCanvas();
     }
     
     //Pinta las lineas verticales sobre la coordenada y
@@ -121,6 +121,14 @@ public class Canvas {
         for (int i = startPoint; i <= endPoint; i++) {
             canvas[y1][i] = 'x';
         }
+    }
+    
+    //Pinta un rectangulo usando los metodos drawVerticalLine y drawHorizontalLine
+    private static void paintRectangle(int x1, int y1, int x2, int y2) {
+        drawVerticalLine(x1, y1, y2);
+        drawVerticalLine(x2, y1, y2);
+        drawHorizontalLine(y1, x1, x2);
+        drawHorizontalLine(y2, x1, x2);
         printCanvas();
     }
 
