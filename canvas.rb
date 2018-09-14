@@ -57,5 +57,21 @@ class Canvas
     
   end
 
+  def canvaB(x,y,c)
+    if (x < @anchoW && y < @altoH && y >= 0 && x >= 0 && @matrizCanva[y][x] != 'X' && c != 'X')
+      pintarCanvaB(x,y,c,'inicio',0)
+    end
+  end
+
+  def pintarCanvaB(x,y,c,posicion,movimientos)
+    if x >= 0 && y >= 0 && @matrizCanva[y][x] != c && x < @anchoW && y < @altoH
+      if posicion != 'derecha'
+        pintarCanvaB(x,y,'izquierda',movimientos+1)
+      end
+
+      
+    end
+  end
+
 
 end
