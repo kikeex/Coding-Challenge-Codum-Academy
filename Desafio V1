@@ -1,55 +1,78 @@
-#include<iostream>
-#include<conio.h>
-#include<math.h>
-    using namespace std;
 
-int main(){
-    char opcion = ' ';
-    
-    do{
-    cout<<"\nSelect an option: \n 1. Create a new canvas. \n 2. Start drawing on the canvas by issuing various commands \n 3. Quit \n\n";
-    cin>>opcion;
-    
-    
-        
-        switch(opcion){
-        case 'C':
-            {
-                int w, h;
-                cout<<"\n Enter command: \n";
-                cin>>w>>h;
-                /*Top line*/
-                for(int i = 0; i < w; i++){
-                    cout<<"-";
-                }
-                cout<<"\n";
-                
-                /*Inner line*/
-                for (int row = 0; row < h; row++) { 
-                    cout<<"|";
-                    for (int column = 0; column < w; column++) { 
-                        cout<<" ";
+/**
+ *
+ * @author Alexander Nicholls
+ */
+import java.util.Scanner;
+
+public class main {
+
+    public static void main(String[] args) {
+        int height, width;
+        String option = "";
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter command: ");
+
+        option = input.nextLine();
+
+        //subString o 
+
+        char[][] canvas;
+
+        switch (option) {
+            case "C": 
+//                System.out.println("\n Case 1 \n");
+
+                width = input.nextInt();
+                height = input.nextInt();
+                canvas = printRectangle(width + 2, height + 2);
+                System.out.println("CANVAS MATRIX__________________________________________________");
+
+                for (int i = 0; i < canvas.length; i++) {
+                    for (int j = 0; j < canvas[i].length; j++) {
+                        System.out.print(canvas[i][j]);
                     }
-                    cout<<"|\n";
+                    System.out.println();
+                }
+                break;
+            
+            case "L": 
+                System.out.println("\n Case 2 \n");
+                break;
+            
+            case "Q": 
+                System.out.println("\n Case 3 \n");
+                break;
+            
+            default:
+                System.out.println("\n Invalid Option \n");
+
+        }
+    }
+
+    static char[][] printRectangle(int column, int row) {
+
+        char[][] canvasTemp = new char[row][column];
+
+        for (int i = 0; i < column; i++) {
+            for (int j = 0; j < row; j++) {
+                if (i == 0 || i == column
+                        || j == 0 || j == row) {
+                    canvasTemp[j][i] = '-';
+                } else {
+                    canvasTemp[j][i] = ' ';
+                }
+
+                if (i == column - 1 || j == row - 1) {
+                    canvasTemp[j][i] = '-';
                 }
                 
-                /*Final line*/
-                for(int i = 0; i < w; i++){
-                    cout<<"-";
-                }
-                cout<<"\n";
-            break;
-            }    
-        case 'L':
-            cout<<"\n Case 2 \n";
-            break;
-        case 'Q':
-            cout<<"\n Case 3 \n";
-            getch();
-            break;
-        default:
-               cout<<"\n Invalid option. \n";
-        }        
-    }while(opcion != 'Q');
-    
+                
+            }
+        }
+
+        return canvasTemp;
+
+    }
 }
