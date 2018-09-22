@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+	<title> App Canvas</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+function drawLine(x1,y1,x2,y2) {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+
+    // Triángulo rellenado
+
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+  }
+}
+
+function drawSquare(x1,y1,x2,y2) {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+
+	ctx.strokeRect(x1,y1,x2-x1,x2-x1);
+  }
+
+
+}
+function drawSquare2(x,y,c) {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+
+	 ctx.fillStyle = "rgba(0, 0, 100, 0.5)";
+     ctx.fillRect(x, y, x, document.getElementById('canvas').width);
+  }
+
+
+}
+function crearCanvas( x, y) {
+	document.getElementById('canvas').width=x;
+	document.getElementById('canvas').height=y;
+}
+
+function leer() {
+  	var valor = document.getElementById('comand').value;
+  	var valorf = valor.split(" ", 5);
+  	if (valorf[0]=="C") {
+  		crearCanvas(valorf[1],valorf[2]);
+  	} else if (valorf[0]=="L") {
+  		drawLine(valorf[1],valorf[2],valorf[3],valorf[4]);
+  	} else if (valorf[0]=="R") {
+		drawSquare(valorf[1],valorf[2],valorf[3],valorf[4]);
+  	}else if (valorf[0]=="B") {
+		drawSquare2(valorf[1],valorf[2],valorf[3]);
+  	}
+  	else if (valorf[0]=="Q") {
+		window.close();
+  	}
+}
+
+
+</script>
+<h3>Configuracion Canvas</h3>
+Ingresa los comandos a dibujar
+<input type="text" name="comand" id="comand">
+
+<button name="crear" onclick="leer()" >Ejecutar</button>
+<br/>
+
+<hr>
+<canvas id="canvas" width="150" height="150"></canvas>
+</body>
+</html>
